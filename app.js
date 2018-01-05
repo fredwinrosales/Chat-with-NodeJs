@@ -12,8 +12,12 @@ server.listen(app.get('port'), function() {
 	console.log('Server started in port 3000');
 });
 
-var socket = io.listen(server);
+var sockets = io.listen(server);
 
-socket.on('connection', function(socket) {
+sockets.on('connection', function(socket) {
 	console.log('Nuevo cliente conectado');
+
+	socket.on('client-message', function(data) {
+		sockets.emit('client-message', data);
+	});
 });
