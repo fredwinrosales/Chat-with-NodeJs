@@ -1,4 +1,7 @@
 $(function() {
+	//Socket iniciado
+	var socket = io();
+	//Variables
 	var message = $('#chat-message');
 	var chat = $('#chat');
 	$('#message-box').submit(function(e) {
